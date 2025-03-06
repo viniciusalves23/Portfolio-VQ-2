@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victoria Caroline | Environmental Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                       <div class="profile-image">
+                    <img src="/img/logo_vq.jpg" alt="Victoria Caroline">
+                </div>
+                <h3 style="color: #fff; font-weight: bold;">Victoria Caroline</h3>
+                <p style="color: #fff;">Educadora Ambiental | Bacharela em Gestão Ambiental | Especialista em Gestão de Projetos| Analista Ambiental</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active"><a href="#dashboard"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                    <li><a href="#about"><i class="fas fa-user"></i> Sobre</a></li>
+                    <li><a href="#projects"><i class="fas fa-tasks"></i> Projetos</a></li>
+                    <li><a href="#skills"><i class="fas fa-chart-bar"></i> Habilidades</a></li>
+                    <li><a href="#experience"><i class="fas fa-briefcase"></i> Experiência</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> Contato</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="https://www.linkedin.com/in/victoria-caroline-de-souza-alves-663814186/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Toggle Button for Mobile -->
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <!-- Header -->
+            <header class="dashboard-header">
+                <h1>Dashboard</h1>
+                <div class="header-actions">
+                    <div class="search-box">
+                        <input type="text" placeholder="Pesquisar...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="notification">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="dashboard-section active-section">
+                <div class="section-header">
+                    <h2>Visão Geral</h2>
+                    <p>Resumo dos projetos e impacto ambiental</p>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-icon green">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <div class="metric-content">
+                            <h3>Projetos Concluídos</h3>
+                            <p class="metric-value">24</p>
+                            <p class="metric-change positive"><i class="fas fa-arrow-up"></i> 12% desde o último mês</p>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-icon blue">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <div class="metric-content">
+                            <h3>Economia de Água</h3>
+                            <p class="metric-value">1.2M</p>
+                            <p class="metric-change positive"><i class="fas fa-arrow-up"></i> 8% desde o último mês</p>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-icon orange">
+                            <i class="fas fa-solar-panel"></i>
+                        </div>
+                        <div class="metric-content">
+                            <h3>Energia Renovável</h3>
+                            <p class="metric-value">450kW</p>
+                            <p class="metric-change positive"><i class="fas fa-arrow-up"></i> 15% desde o último mês</p>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-icon purple">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <div class="metric-content">
+                            <h3>Resíduos Reciclados</h3>
+                            <p class="metric-value">3.5T</p>
+                            <p class="metric-change positive"><i class="fas fa-arrow-up"></i> 5% desde o último mês</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="charts-container">
+                    <div class="chart-card">
+                        <h3>Impacto Ambiental por Projeto</h3>
+                        <canvas id="projectImpactChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Distribuição de Projetos</h3>
+                        <canvas id="projectDistributionChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="recent-projects">
+                    <div class="section-header">
+                        <h3>Projetos Recentes</h3>
+                        <a href="#projects" class="view-all">Ver Todos</a>
+                    </div>
+                    <div class="project-list">
+                        <div class="project-item">
+                            <div class="project-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div class="project-details">
+                                <h4>Restauração de Áreas Degradadas</h4>
+                                <p>Recuperação de 50 hectares de mata ciliar</p>
+                            </div>
+                            <div class="project-status completed">
+                                <span>Concluído</span>
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-icon">
+                                <i class="fas fa-tint"></i>
+                            </div>
+                            <div class="project-details">
+                                <h4>Monitoramento de Qualidade da Água</h4>
+                                <p>Análise de parâmetros físico-químicos em rios urbanos</p>
+                            </div>
+                            <div class="project-status in-progress">
+                                <span>Em Andamento</span>
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-icon">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                            <div class="project-details">
+                                <h4>Gestão de Resíduos Sólidos</h4>
+                                <p>Implementação de coleta seletiva em comunidades</p>
+                            </div>
+                            <div class="project-status planning">
+                                <span>Planejamento</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section id="about" class="dashboard-section">
+                <div class="section-header">
+                    <h2>Sobre Mim</h2>
+                    <p>Perfil profissional e formação acadêmica</p>
+                </div>
+
+                <div class="about-container">
+                    <div class="about-image">
+                        <img src="/img/about.jpg" alt="Victoria Caroline">
+                    </div>
+                    <div class="about-content">
+                        <h3>Victoria Caroline de Souza Alves</h3>
+                        <p class="about-title">Educadora Ambiental</p>
+                        
+                        <p class="about-description">
+                            Especialista em Gestão de Projetos e Bacharela em Gestão Ambiental pela Universidade de São Paulo. Atuo como Educadora Ambiental no Parque da Água Branca (São Paulo - SP). Minha experiência profissional é marcada pelo compromisso em conectar pessoas com o meio ambiente e promover ações cidadãs e participativas para redução e mitigação dos impactos ambientais a nível local e regional. 
+                        </p>
+                        
+                        <div class="about-details">
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>São Paulo, SP, Brasil</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>victoriacarolinedesouzaalves@gmail.com</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Universidade de São Paulo</span>
+                            </div>
+                        </div>
+                        
+                        <div class="education-timeline">
+                            <h4>Formação Acadêmica</h4>
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-content">
+                                        <h5>Gestão de Projetos , Administração, Negócios e Marketing</h5>
+                                        <p>MBA USP/Esalq</p>
+                                        <span class="timeline-date">2023 - 2024</span>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-content">
+                                        <h5>Bacharelado em Gestão Ambiental, Ciências Ambientais</h5>
+                                        <p>Universidade de São Paulo</p>
+                                        <span class="timeline-date">2017 - 2021</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="dashboard-section">
+                <div class="section-header">
+                    <h2>Projetos Ambientais</h2>
+                    <p>Portfólio de projetos e iniciativas ambientais</p>
+                </div>
+
+                <div class="projects-filter">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="conservation">Conservação</button>
+                    <button class="filter-btn" data-filter="waste">Resíduos</button>
+                    <button class="filter-btn" data-filter="education">Educação</button>
+                    <button class="filter-btn" data-filter="consulting">Consultoria</button>
+                </div>
+
+                <div class="projects-grid">
+                    <div class="project-card" data-category="conservation">
+                        <div class="project-image">
+                            <img src="https://via.placeholder.com/400x300" alt="Projeto de Restauração">
+                            <div class="project-overlay">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category">Conservação</span>
+                            <h3>Programa Adapta Keraciaba: Pesquisa-ação crítica para adaptação climática e redução de desastres</h3>
+                            <p>Apoio na manutenção do programa de divulgação permanente para a comunicação e percepção dos riscos e do estímulo ao diálogo, percepção e desenvolvimento de ações de enfrentamento aos riscos de desastres envolvendo comunidades na zona leste de São Paulo e a Universidade. Apoio em atividades como: revisão de relatórios, arquivos, artigos e entre outros materiais educativos produzidos pelo grupo; participação em eventos presenciais com os moradores dos territórios do Jardim Keralux e Vila Guaraciaba; participação de reuniões; aplicações de ferramentas de gestão de projetos e apoio na formação dos estudantes que integram a equipe de projetos.</p>
+                            <div class="project-tags">
+                                <span>PRAD</span>
+                                <span>Reflorestamento</span>
+                                <span>Conservação</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="waste">
+                        <div class="project-image">
+                            <img src="https://via.placeholder.com/400x300" alt="Gestão de Resíduos">
+                            <div class="project-overlay">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category">Resíduos</span>
+                            <h3>Programa Adapta Keraciaba: Trilhas de formação e divulgação científica para Adaptação Climática e Redução de Risco de Desastres</h3>
+                            <p>Apoio na manutenção do programa de divulgação permanente para a comunicação e percepção dos riscos e do estímulo ao diálogo, percepção e desenvolvimento de ações de enfrentamento aos riscos de desastres envolvendo comunidades na zona leste de São Paulo e a Universidade. Apoio em atividades como: revisão de relatórios, arquivos, artigos e entre outros materiais educativos produzidos pelo grupo; participação em eventos presenciais com os moradores dos territórios do Jardim Keralux e Vila Guaraciaba; participação de reuniões; aplicações de ferramentas de gestão de projetos e apoio na formação dos estudantes que integram a equipe de projetos.</p>
+                            <div class="project-tags">
+                                <span>PGRS</span>
+                                <span>Coleta Seletiva</span>
+                                <span>Reciclagem</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="education">
+                        <div class="project-image">
+                            <img src="https://via.placeholder.com/400x300" alt="Educação Ambiental">
+                            <div class="project-overlay">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category">Educação</span>
+                            <h3>Programa Adapta Keraciaba: A história das comunidades na gestão de riscos de desastres e adaptação climática</h3>
+                            <p>PApoio na manutenção do programa de divulgação permanente para a comunicação e percepção dos riscos e do estímulo ao diálogo, percepção e desenvolvimento de ações de enfrentamento aos riscos de desastres envolvendo comunidades na zona leste de São Paulo e a Universidade. Apoio em atividades como: revisão de relatórios, arquivos, artigos e entre outros materiais educativos produzidos pelo grupo; participação em eventos presenciais com os moradores dos territórios do Jardim Keralux e Vila Guaraciaba; participação de reuniões; aplicações de ferramentas de gestão de projetos e apoio na formação dos estudantes que integram a equipe de projetos.                            </p>
+                            <div class="project-tags">
+                                <span>Educação</span>
+                                <span>Sustentabilidade</span>
+                                <span>Comunidade</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="consulting">
+                        <div class="project-image">
+                            <img src="https://via.placeholder.com/400x300" alt="Licenciamento Ambiental">
+                            <div class="project-overlay">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category">Consultoria</span>
+                            <h3>
+                                Adapta Keraciaba: Cartografia Social e História Oral dos riscos socioambientais do território</h3>
+                            <p>Atuação como voluntária no projeto Adapta Keraciaba: Cartografia Social e História Oral dos riscos socioambientais do território, fomentado pela Pró-Reitoria de Cultura e Extensão da Universidade de São Paulo (PRCEU USP), desenvolvendo atividades de apoio no planejamento e execução dos Diálogos Cartografados do Jd. Keralux e Vila Guaraciaba, comunidades vizinhas à USP Leste, tais como: apoio na realização do mapeamento participativos dos riscos e potencialidades socioambientais, apoio na coleta dos relatos e registros audiovisuais das memórias dos(as) moradores(as) sobre as lutas do bairro e os desastres vivenciados por meio de História Oral e apoio na difusão dos resultados em produtos cartográficos e de divulgação científica.</p>
+                            <div class="project-tags">
+                                <span>Licenciamento</span>
+                                <span>EIA/RIMA</span>
+                                <span>Consultoria</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="conservation">
+                        <div class="project-image">
+                            <img src="https://via.placeholder.com/400x300" alt="Monitoramento Ambiental">
+                            <div class="project-overlay">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category">Conservação</span>
+                            <h3>
+                                Gestão de Riscos de desastres e Adaptação Climática: Programa Adapta Keraciaba</h3>
+                            <p>Atuação como bolsista no projeto Gestão de Riscos de desastres e Adaptação Climática: Programa Adapta Keraciaba, contemplado pelo Programa Unificado de Bolsas (PUB) da USP (edital 2021-2022), na função de Representante da frente de Formações Socioambientais, desenvolvendo atividades como: levantamento bibliográfico das temáticas referentes ao projeto; planejamento e execução das formações socioambientais com os(as) integrantes do projeto e com moradores do Jd. Keralux e Vila Guaraciaba (comunidades vizinhas à USP Leste); facilitação de oficinas, encontros e formações; apoio na elaboração de materiais de comunicação socioambiental; elaboração de planilhas e documentos de controle da ocorrência das formações; contato direto com integrantes do projeto por meio de canais de comunicação (whatsapp, e-mail e outros); realização de reuniões semanais; sistematização de dados e informações; divulgação científica dos resultados do projeto; apoio na elaboração de vídeos e de material educativo com o objetivo de mobilizar e engajar a comunidade do Jardim Keralux e Vila Guaraciaba na Redução de Riscos dos Desastres (RRD) incidentes em âmbito local e à Adaptação Climática.</p>
+                            <div class="project-tags">
+                                <span>Monitoramento</span>
+                                <span>Análises</span>
+                                <span>Qualidade Ambiental</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="consulting">
+                        <div class="project-image">
+                            <img src="https://via.placeholder.com/400x300" alt="Consultoria em Sustentabilidade">
+                            <div class="project-overlay">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category">Consultoria</span>
+                            <h3>
+                                Estruturação e fortalecimento da Rede de Educação e Redução de Riscos de Desastres no Litoral Norte de São Paulo (ERRD-LN)</h3>
+                            <p>Atuação como bolsista no projeto Estruturação e fortalecimento da Rede de Educação e Redução de Riscos de Desastres no Litoral Norte de São Paulo (ERRD-LN), contemplado pelo Programa USP Municípios da USP, desenvolvendo atividades como: apoio à comunicação do projeto e da Rede ERRD LN nas redes e mídias sociais (whatsapp, instagram, facebook, gmail, linkedin, site, Wiki, Tropixel e outros).</p>
+                            <div class="project-tags">
+                                <span>ESG</span>
+                                <span>ISO 14001</span>
+                                <span>Sustentabilidade Corporativa</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section id="skills" class="dashboard-section">
+                <div class="section-header">
+                    <h2>Habilidades & Expertise</h2>
+                    <p>Competências técnicas e conhecimentos especializados</p>
+                </div>
+
+                <div class="skills-container">
+                    <div class="skills-chart-container">
+                        <h3>Áreas de Atuação</h3>
+                        <canvas id="skillsRadarChart"></canvas>
+                    </div>
+
+                    <div class="skills-list">
+                        <h3>Competências Técnicas</h3>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <h4>Licenciamento Ambiental</h4>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <h4>Gestão de Resíduos</h4>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <h4>Consultoria Ambiental</h4>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <h4>Educação Ambiental</h4>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <h4>Recuperação de Áreas Degradadas</h4>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <h4>Monitoramento Ambiental</h4>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tools-container">
+                    <h3>Ferramentas & Tecnologias</h3>
+                    <div class="tools-grid">
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-map"></i>
+                            </div>
+                            <h4>GIS/SIG</h4>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-drafting-compass"></i>
+                            </div>
+                            <h4>AutoCAD</h4>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <h4>Sistemas de Gestão Ambiental</h4>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h4>Modelagem Ambiental</h4>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h4>Análise de Dados Ambientais</h4>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <h4>Legislação Ambiental</h4>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <h4>Certificações ISO</h4>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-microscope"></i>
+                            </div>
+                            <h4>Análises Laboratoriais</h4>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section id="experience" class="dashboard-section">
+                <div class="section-header">
+                    <h2>Experiência Profissional</h2>
+                    <p>Trajetória e atuação na área ambiental</p>
+                </div>
+
+                <div class="experience-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">
+                            <span>2022 - Presente</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Analista Ambiental Sênior</h3>
+                            <p class="company">Secretaria de Meio Ambiente de Itajubá</p>
+                            <p class="description">
+                                Responsável pela análise de processos de licenciamento ambiental, elaboração de pareceres técnicos e fiscalização de empreendimentos. Coordenação de projetos de educação ambiental e gestão de resíduos sólidos.
+                            </p>
+                            <div class="timeline-tags">
+                                <span>Licenciamento</span>
+                                <span>Fiscalização</span>
+                                <span>Gestão de Projetos</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">
+                            <span>2020 - 2022</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Consultora Ambiental</h3>
+                            <p class="company">EcoSolutions Consultoria</p>
+                            <p class="description">
+                                Elaboração de estudos ambientais, relatórios de impacto ambiental e planos de gerenciamento de resíduos. Assessoria a empresas em processos de licenciamento e adequação à legislação ambiental.
+                            </p>
+                            <div class="timeline-tags">
+                                <span>Consultoria</span>
+                                <span>EIA/RIMA</span>
+                                <span>PGRS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">
+                            <span>2018 - 2020</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Estagiária em Gestão Ambiental</h3>
+                            <p class="company">Prefeitura Municipal de Itajubá</p>
+                            <p class="description">
+                                Apoio na implementação de programas de educação ambiental, coleta seletiva e monitoramento da qualidade da água em rios urbanos. Participação em projetos de arborização urbana e recuperação de áreas degradadas.
+                            </p>
+                            <div class="timeline-tags">
+                                <span>Educação Ambiental</span>
+                                <span>Coleta Seletiva</span>
+                                <span>Monitoramento</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="dashboard-section">
+                <div class="section-header">
+                    <h2>Entre em Contato</h2>
+                    <p>Vamos conversar sobre projetos ambientais</p>
+                </div>
+
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Informações de Contato</h3>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>victoria.caroline@email.com</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Telefone</h4>
+                                <p>+55 (35) 99999-9999</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Localização</h4>
+                                <p>Itajubá, Minas Gerais, Brasil</p>
+                            </div>
+                        </div>
+
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/victoria-caroline-de-souza-alves-663814186/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="contact-form">
+                        <h3>Envie uma Mensagem</h3>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Nome</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Assunto</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Mensagem</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-paper-plane"></i> Enviar Mensagem
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
